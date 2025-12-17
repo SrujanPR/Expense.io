@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background-color: #0a0508; /* Deep pinkish black base */
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  /* CHANGED: The base gradient now has a pink hue at the top */
+  background: radial-gradient(circle at top center, #33001b 0%, #050505 100%);
+  min-height: 100vh;
+}
+
+/* -----------------------------------------------------------------
+   REWORKED GLASS CARD:
+   - Super transparent (0.15 opacity)
+   - Stronger Blur
+   - Pink tint in the glass itself
+   ----------------------------------------------------------------- */
+.glass-card {
+  @apply backdrop-blur-2xl transition-all duration-300;
+  
+  /* Much clearer glass (was 0.3, now 0.15) */
+  background-color: rgba(20, 10, 20, 0.15); 
+  
+  /* Pink border by default */
+  border: 1px solid rgba(255, 0, 127, 0.2); 
+  
+  /* Subtle pink inner glow */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), inset 0 0 40px rgba(255, 0, 127, 0.05);
+}
+
+.glass-card:hover {
+  background-color: rgba(20, 10, 20, 0.25);
+  border-color: rgba(255, 0, 127, 0.6);
+  /* Stronger outer glow on hover */
+  box-shadow: 0 0 40px rgba(255, 0, 127, 0.3); 
+  transform: translateY(-4px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0a0508; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #ff007f; }
+
+/* Force Colors */
+.text-neon-pink { color: #ff007f !important; }
+.bg-neon-pink { background-color: #ff007f !important; }
+
+/* Animation Keyframes */
+@keyframes scaleUp {
+  from { transform: scale(0.98); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
